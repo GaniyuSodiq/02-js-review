@@ -153,4 +153,14 @@ const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
   book;
 title;
 author;
-console.log(author, title);
+console.log(author, title, genres);
+
+// const primaryGenre = genres[0];
+// const secondaryGenre = genres[1];
+// console.log(primaryGenre, secondaryGenre);
+
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+console.log(primaryGenre, secondaryGenre, otherGenres);
+
+const newGenres = ["epicFantasy", ...genres];
+console.log(newGenres);
