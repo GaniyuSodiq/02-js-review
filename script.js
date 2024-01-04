@@ -145,7 +145,7 @@ function getBook(id) {
 
 //DESTRUCTURING
 
-const book = getBook(5);
+const book = getBook(2);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -181,5 +181,11 @@ updatedBook;
 //TEMPLATE LITERALS
 const summary = `${title}, a ${pages}-page long book by ${author} and published on ${
   publicationDate.split("-")[0]
-}`;
+}. The book has ${hasMovieAdaptation ? "" : "not"} been adabted as a movie`;
 summary;
+
+//TERNARY OPERATOR
+const pagesRange =
+  pages > 1000 ? "over one thousand" : "less than one thousand";
+pagesRange;
+console.log(`The book has ${pagesRange} pages`);
