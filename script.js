@@ -143,9 +143,9 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-//Destructuring
+//DESTRUCTURING
 
-const book = getBook(1);
+const book = getBook(5);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -158,10 +158,13 @@ console.log(author, title, genres);
 // const primaryGenre = genres[0];
 // const secondaryGenre = genres[1];
 // console.log(primaryGenre, secondaryGenre);
+genres;
 
+//REST
 const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
 console.log(primaryGenre, secondaryGenre, otherGenres);
 
+//SPREAD
 const newGenres = ["epicFantasy", ...genres];
 console.log(newGenres);
 
@@ -174,3 +177,9 @@ const updatedBook = {
   pages: 1200,
 };
 updatedBook;
+
+//TEMPLATE LITERALS
+const summary = `${title}, a ${pages}-page long book by ${author} and published on ${
+  publicationDate.split("-")[0]
+}`;
+summary;
