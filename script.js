@@ -145,7 +145,7 @@ function getBook(id) {
 
 //DESTRUCTURING
 
-const book = getBook(2);
+const book = getBook(1);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -178,10 +178,19 @@ const updatedBook = {
 };
 updatedBook;
 
+//ARROW FUNCTION
+
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
 //TEMPLATE LITERALS
-const summary = `${title}, a ${pages}-page long book by ${author} and published on ${
-  publicationDate.split("-")[0]
-}. The book has ${hasMovieAdaptation ? "" : "not"} been adabted as a movie`;
+const summary = `${title}, a ${pages}-page long book by ${author} and published in ${getYear(
+  publicationDate
+)}. The book has ${hasMovieAdaptation ? "" : "not"} been adabted as a movie`;
 summary;
 
 //TERNARY OPERATOR
