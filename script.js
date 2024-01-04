@@ -145,7 +145,7 @@ function getBook(id) {
 
 //DESTRUCTURING
 
-const book = getBook(1);
+const book = getBook(2);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -198,3 +198,34 @@ const pagesRange =
   pages > 1000 ? "over one thousand" : "less than one thousand";
 pagesRange;
 console.log(`The book has ${pagesRange} pages`);
+
+//SHORT CIRCUIT
+
+console.log(true && "some string"); // && looks for false to return. && returns the last one if everything is true
+console.log("some string" && true);
+console.log(false && "some string");
+
+console.log(hasMovieAdaptation && "has movie adaptation");
+
+//falsy values:    0, '', null, undefined
+//truety values:    everything else aside falsy value
+
+console.log("jonas" && "some string");
+console.log(0 && "some string");
+
+console.log(true || "some string"); // || looks for true to return. here short cuit occurs when the first value is 'true', it does even check the other value(s)
+console.log(false || "some string");
+
+console.log(book.translations.spanish);
+const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+spanishTranslation;
+//this immediate above example can also go wrong, lets see an example below
+
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong;
+//solution is 👇
+//nullish coalescing '??'
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
+//nullish coalescing '??' will only return the second value when the first is 'null' or 'undefined'
