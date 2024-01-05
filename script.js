@@ -145,7 +145,7 @@ function getBook(id) {
 
 //DESTRUCTURING
 
-const book = getBook(2);
+const book = getBook(3);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -221,11 +221,21 @@ const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
 spanishTranslation;
 //this immediate above example can also go wrong, lets see an example below
 
-console.log(book.reviews.librarything.reviewsCount);
-const countWrong = book.reviews.librarything.reviewsCount || "no data";
-countWrong;
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || "no data";
+// countWrong;
 //solution is 👇
 //nullish coalescing '??'
-const count = book.reviews.librarything.reviewsCount ?? "no data";
-count;
+// const count = book.reviews.librarything.reviewsCount ?? "no data";
+// count;
 //nullish coalescing '??' will only return the second value when the first is 'null' or 'undefined'
+
+//OPTIONAL CHAINING
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
