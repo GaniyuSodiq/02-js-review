@@ -66,7 +66,7 @@ const data = [
     publicationDate: "1965-01-01",
     author: "Frank Herbert",
     genres: ["science fiction", "novel", "adventure"],
-    hasMovieAdaptation: true,
+    hasMovieAdaptation: false,
     pages: 658,
     translations: {
       spanish: "",
@@ -238,7 +238,9 @@ count;
 console.log(getTotalReviewCount(book));
 */
 
-// THE ARRAY MAP METHOD
+// THE ARRAY MAP METHOD -
+// perform this action on all elements in an
+// array then give the results in another array
 
 const books = getBooks();
 
@@ -248,15 +250,29 @@ console.log(x);
 const title = books.map((book) => book.title);
 console.log(title);
 
-function getTotalReviewCount(book) {
-  const goodreads = book.reviews?.goodreads?.reviewsCount;
-  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
-  return goodreads + librarything;
-}
-
 const essentialData = books.map((book) => ({
   title: book.title,
   author: book.author,
   reviewsCount: getTotalReviewCount(book),
 }));
 console.log(essentialData);
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+//THE ARRAY FILTER METHOD -
+// create an array of all the elements
+// that meets a certain criterial
+
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+console.log(longBooksWithMovie);
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+console.log(adventureBooks);
