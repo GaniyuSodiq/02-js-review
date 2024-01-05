@@ -281,3 +281,12 @@ console.log(adventureBooks);
 
 const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
 console.log(pagesAllBooks);
+
+//THE ARRAY SORT METHOD
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.slice().sort((a, b) => a - b);
+console.log(sorted);
+arr;
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+console.log(sortedByPages);
