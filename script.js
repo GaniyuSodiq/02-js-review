@@ -143,6 +143,7 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 //DESTRUCTURING
 
 const book = getBook(3);
@@ -221,16 +222,31 @@ const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
 spanishTranslation;
 //this immediate above example can also go wrong, lets see an example below
 
-// console.log(book.reviews.librarything.reviewsCount);
-// const countWrong = book.reviews.librarything.reviewsCount || "no data";
-// countWrong;
+console.log(book.reviews?.librarything?.reviewsCount);
+const countWrong = book.reviews?.librarything?.reviewsCount || "no data";
+countWrong;
 //solution is 👇
 //nullish coalescing '??'
-// const count = book.reviews.librarything.reviewsCount ?? "no data";
-// count;
+const count = book.reviews?.librarything?.reviewsCount ?? "no data";
+count;
 //nullish coalescing '??' will only return the second value when the first is 'null' or 'undefined'
 
 //OPTIONAL CHAINING
+
+
+
+console.log(getTotalReviewCount(book));
+*/
+
+// THE ARRAY MAP METHOD
+
+const books = getBooks();
+
+const x = [1, 2, 3, 4].map((el) => el * 2);
+console.log(x);
+
+const title = books.map((book) => book.title);
+console.log(title);
 
 function getTotalReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount;
@@ -238,4 +254,9 @@ function getTotalReviewCount(book) {
   return goodreads + librarything;
 }
 
-console.log(getTotalReviewCount(book));
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+console.log(essentialData);
