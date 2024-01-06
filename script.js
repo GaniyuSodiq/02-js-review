@@ -316,7 +316,10 @@ console.log(booksAfterUpdate);
 */
 
 //ASYNCHRONOUS JAVASCRIPT - PROMISES
-//ususally use to fetch data from an external api using the fetch()
+// js is asynchronous ie runs code line by line without waiting
+// so we need to make it wait sometimes for code that depends on other external data
+// so we use asynchrounous js for the purpose.
+// we ususally use to fetch() get data from an external api using
 
 fetch("https://jsonplaceholder.typicode.com/todos");
 // js fetch the data but needs to wait for http request before
@@ -327,6 +330,25 @@ fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
   res.json().then((data) => console.log(data))
 );
 
+console.log("Sodiq"); //this console gets printed b4 the console in
+//the fetch statment bcs js is asynchrous by default
+
 // then() is use to wait for the data from promise, this initial data needs to the coverted to json()
 // .json() is also an asynchrous operation so it returns a Promise
 // so another then() is needed to wait for the data
+
+//ASYNCHRONOUS JAVASCRIPT - ASYNC/AWAIT
+// this also gives a Promise
+// but we ususlly use this async/await more than then() to wait bcs asyn/await is a function
+
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  console.log(data);
+
+  return data;
+}
+
+const todos = getTodos();
+
+console.log("Sodiq Ganiyu");
