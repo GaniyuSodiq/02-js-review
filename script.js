@@ -238,6 +238,7 @@ count;
 console.log(getTotalReviewCount(book));
 */
 
+/*
 // THE ARRAY MAP METHOD -
 // perform this action on all elements in an
 // array then give the results in another array
@@ -312,3 +313,20 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
   book.id === 1 ? { ...book, pages: 1 } : book
 );
 console.log(booksAfterUpdate);
+*/
+
+//ASYNCHRONOUS JAVASCRIPT - PROMISES
+//ususally use to fetch data from an external api using the fetch()
+
+fetch("https://jsonplaceholder.typicode.com/todos");
+// js fetch the data but needs to wait for http request before
+// getting the data, so the fetch returns a Promise
+console.log(fetch("https://jsonplaceholder.typicode.com/todos"));
+
+fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
+  res.json().then((data) => console.log(data))
+);
+
+// then() is use to wait for the data from promise, this initial data needs to the coverted to json()
+// .json() is also an asynchrous operation so it returns a Promise
+// so another then() is needed to wait for the data
